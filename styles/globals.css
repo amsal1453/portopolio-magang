@@ -1,0 +1,333 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: 15 23 42; /* slate-950 */
+    --bg-secondary: 30 41 59; /* slate-800 */
+    --bg-tertiary: 51 65 85; /* slate-700 */
+    --text-primary: 255 255 255;
+    --text-secondary: 148 163 184; /* slate-400 */
+    --text-tertiary: 100 116 139; /* slate-500 */
+    --accent-primary: 99 102 241; /* indigo-500 */
+    --accent-secondary: 59 130 246; /* blue-500 */
+    --border-color: 51 65 85; /* slate-700 */
+    --glass-bg: 30 41 59; /* slate-800 */
+
+    /* Theme transition */
+    --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .light {
+    --bg-primary: 249 250 251; /* gray-50 */
+    --bg-secondary: 255 255 255; /* white */
+    --bg-tertiary: 243 244 246; /* gray-100 */
+    --text-primary: 17 24 39; /* gray-900 */
+    --text-secondary: 75 85 99; /* gray-600 */
+    --text-tertiary: 107 114 128; /* gray-500 */
+    --accent-primary: 79 70 229; /* indigo-600 */
+    --accent-secondary: 37 99 235; /* blue-600 */
+    --border-color: 229 231 235; /* gray-200 */
+    --glass-bg: 255 255 255; /* white */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply transition-colors duration-500;
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .light body {
+    background: linear-gradient(135deg, rgb(var(--bg-primary)) 0%, rgb(var(--bg-tertiary)) 100%);
+  }
+
+  /* Smooth theme transitions for all elements */
+  * {
+    transition: var(--transition-theme);
+  }
+
+  /* Override for elements that should have faster transitions */
+  button,
+  a,
+  input,
+  textarea {
+    transition: all 0.3s ease;
+  }
+
+  /* Animation elements should not have theme transitions */
+  [data-animate="true"] {
+    transition: transform 0.3s ease, opacity 0.3s ease !important;
+  }
+
+  /* Improved heading styles for light mode */
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(var(--text-primary));
+    font-weight: 600;
+  }
+
+  .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+    color: rgb(var(--text-primary));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Better paragraph styling for light mode */
+  p {
+    color: rgb(var(--text-secondary));
+    font-weight: 400;
+  }
+
+  .light p {
+    color: rgb(var(--text-secondary));
+    line-height: 1.7;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Enhanced gradient text for light mode */
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .light .gradient-text {
+    @apply bg-gradient-to-r from-indigo-700 to-blue-700 bg-clip-text text-transparent;
+    filter: brightness(1.1);
+  }
+
+  /* Enhanced glass effect for light mode */
+  .glass-effect {
+    @apply backdrop-blur-md;
+    background: rgba(var(--glass-bg), 0.85);
+    border: 1px solid rgba(var(--border-color), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .light .glass-effect {
+    background: rgba(var(--glass-bg), 0.95);
+    border: 1px solid rgba(var(--border-color), 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Enhanced card styles for light mode */
+  .card-light {
+    background: rgb(var(--bg-secondary));
+    border: 1px solid rgba(var(--border-color), 0.5);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05),
+                0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
+  .light .card-light {
+    background: rgb(var(--bg-secondary));
+    border: 1px solid rgba(var(--border-color), 0.8);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08),
+                0 4px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Button styles for light mode */
+  .btn-primary {
+    background: linear-gradient(135deg, rgb(var(--accent-primary)), rgb(var(--accent-secondary)));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(var(--accent-primary), 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(var(--accent-primary), 0.4);
+  }
+
+  .light .btn-primary {
+    box-shadow: 0 4px 12px rgba(var(--accent-primary), 0.25);
+  }
+
+  .light .btn-primary:hover {
+    box-shadow: 0 6px 16px rgba(var(--accent-primary), 0.35);
+  }
+
+  /* Text contrast improvements for light mode */
+  .text-contrast {
+    color: rgb(var(--text-primary));
+  }
+
+  .text-muted {
+    color: rgb(var(--text-secondary));
+  }
+
+  .light .text-muted {
+    color: rgb(var(--text-secondary));
+    opacity: 0.9;
+  }
+}
+
+/* Enhanced scrollbar with better light mode support */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(var(--bg-tertiary));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--text-tertiary));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--text-secondary), 0.8);
+}
+
+.light ::-webkit-scrollbar-track {
+  background-color: rgb(var(--bg-tertiary));
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--text-tertiary));
+  border: 2px solid rgb(var(--bg-primary));
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--text-secondary));
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Theme transition animations */
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.theme-transition {
+  animation: theme-fade-in 0.5s ease-in-out;
+}
+
+/* Enhanced magnetic button effect */
+.magnetic-button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.magnetic-button:hover {
+  transform: translate(var(--mouse-x, 0), var(--mouse-y, 0));
+}
+
+.light .magnetic-button:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced loading screen theme support */
+.loading-screen {
+  background: rgb(var(--bg-primary));
+  color: rgb(var(--text-primary));
+}
+
+.light .loading-screen {
+  background: linear-gradient(135deg, rgb(var(--bg-primary)) 0%, rgb(var(--bg-tertiary)) 100%);
+}
+
+/* Enhanced floating shapes theme support */
+.floating-shape {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(59, 130, 246, 0.1));
+  border-radius: 50%;
+}
+
+.light .floating-shape {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(59, 130, 246, 0.08));
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
+}
+
+/* Enhanced section backgrounds for light mode */
+.section-light {
+  background: rgb(var(--bg-secondary));
+}
+
+.light .section-light {
+  background: rgb(var(--bg-secondary));
+  border: 1px solid rgba(var(--border-color), 0.5);
+}
+
+/* Navigation improvements for light mode */
+.nav-light {
+  background: rgba(var(--bg-secondary), 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(var(--border-color), 0.2);
+}
+
+.light .nav-light {
+  background: rgba(var(--bg-secondary), 0.98);
+  border-bottom: 1px solid rgba(var(--border-color), 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Footer improvements for light mode */
+.footer-light {
+  background: rgb(var(--bg-tertiary));
+  border-top: 1px solid rgba(var(--border-color), 0.2);
+}
+
+.light .footer-light {
+  background: rgb(var(--bg-tertiary));
+  border-top: 1px solid rgba(var(--border-color), 0.6);
+}
+
+/* Enhanced form elements for light mode */
+.input-light {
+  background: rgb(var(--bg-secondary));
+  border: 1px solid rgba(var(--border-color), 0.3);
+  color: rgb(var(--text-primary));
+}
+
+.light .input-light {
+  background: rgb(var(--bg-secondary));
+  border: 1px solid rgba(var(--border-color), 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.light .input-light:focus {
+  border-color: rgb(var(--accent-primary));
+  box-shadow: 0 0 0 3px rgba(var(--accent-primary), 0.1);
+}
+
+/* Enhanced hover effects for light mode */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.light .hover-lift:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
