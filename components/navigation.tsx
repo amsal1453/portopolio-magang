@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import ThemeToggle from "./theme-toggle"
+
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -81,12 +81,12 @@ export default function Navigation() {
                 </motion.button>
               ))}
             </div>
-            <ThemeToggle />
+           
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
+          
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-300 dark:text-slate-300 light:text-slate-600 hover:text-white dark:hover:text-white light:hover:text-slate-900 p-2"

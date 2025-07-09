@@ -4,8 +4,14 @@ import type React from "react"
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react"
 import RevealOnScroll from "./reveal-on-scroll"
+
+const XIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
 export default function ContactSection() {
   const ref = useRef(null)
@@ -17,17 +23,42 @@ export default function ContactSection() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string | null }>({
+    type: null,
+    message: null
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: null })
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    alert("Message sent successfully!")
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Message sent successfully! I will get back to you soon.'
+      })
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,31 +72,35 @@ export default function ContactSection() {
     {
       icon: <Mail size={24} />,
       title: "Email",
-      value: "john@example.com",
-      href: "mailto:john@example.com",
+      value: "kunamsaldasilva@gmail.com",
+      href: "mailto:kunamsaldasilva@gmail.com",
     },
     {
       icon: <Phone size={24} />,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+62-822-9840-8865",
+      href: "tel:+6282298408865",
     },
     {
       icon: <MapPin size={24} />,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Banda Aceh, Indonesia",
       href: "#",
     },
   ]
 
   const socialLinks = [
-    { icon: <Github size={24} />, href: "https://github.com", label: "GitHub" },
-    { icon: <Linkedin size={24} />, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: <Twitter size={24} />, href: "https://twitter.com", label: "Twitter" },
+    { icon: <Github size={24} />, href: "https://github.com/amsal1453", label: "GitHub" },
+    { icon: <Linkedin size={24} />, href: "https://www.linkedin.com/in/amsal-amsal-402825293/", label: "LinkedIn" },
+    { icon: <XIcon />, href: "https://x.com/kun_amsal17", label: "X (Twitter)" },
   ]
 
   return (
-    <section id="contact" className="py-20 bg-slate-900/50" ref={ref}>
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-b from-slate-800 to-slate-900 dark:from-slate-800 dark:to-slate-900 light:from-slate-50 light:to-slate-100 transition-colors duration-500 relative"
+      ref={ref}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <div className="text-center mb-16">
@@ -254,6 +289,30 @@ export default function ContactSection() {
           </RevealOnScroll>
         </div>
       </div>
+
+      {/* Add status message display with new styling */}
+      {submitStatus.message && (
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          className={`fixed left-1/2 bottom-8 transform -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg ${submitStatus.type === 'success'
+            ? 'bg-emerald-500 text-white'
+            : 'bg-red-500 text-white'
+            } text-base font-medium flex items-center gap-2 min-w-[300px] justify-center`}
+        >
+          {submitStatus.type === 'success' ? (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          ) : (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          )}
+          {submitStatus.message}
+        </motion.div>
+      )}
     </section>
   )
 }

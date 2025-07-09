@@ -44,7 +44,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 bg-slate-900/50 dark:bg-slate-900/50 light:bg-slate-50/50 transition-colors duration-500"
+      className="py-20 bg-gradient-to-b from-slate-900 to-slate-800 dark:from-slate-900 dark:to-slate-800 light:from-slate-100 light:to-slate-50 transition-colors duration-500"
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
