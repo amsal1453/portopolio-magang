@@ -76,7 +76,7 @@ export default function HeroSection() {
           className="text-lg text-slate-400 dark:text-slate-400 light:text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed transition-colors duration-300"
           variants={itemVariants}
         >
-          I build high-performance full-stack web applications using Laravel, React, and Inertia.js.
+          I build high-performance full-stack web applications using Laravel, React Inertia.js.
           Passionate about solving real problems with elegant code and scalable architecture.
         </motion.p>
 
@@ -100,24 +100,10 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 text-white"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const link = document.createElement('a')
-              link.href = '/cv-amsal.pdf'
-              link.download = 'cv-amsal.pdf'
-              document.body.appendChild(link)
-              link.click()
-              document.body.removeChild(link)
-            }}
-          >
-            Download CV
-          </motion.button>
+          
 
           <motion.button
-            className="px-8 py-4 border border-slate-600 dark:border-slate-600 light:border-slate-300 rounded-full font-semibold hover:bg-slate-800 dark:hover:bg-slate-800 light:hover:bg-slate-100 transition-all duration-300 text-white dark:text-white light:text-slate-700"
+            className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 text-white"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}

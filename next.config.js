@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -9,6 +11,10 @@ const nextConfig = {
   images: {
     domains: ["placeholder.svg"],
     unoptimized: true,
+  },
+  webpack: (config) => {
+    config.plugins.push(new MiniCssExtractPlugin());
+    return config;
   },
 }
 

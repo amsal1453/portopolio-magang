@@ -5,6 +5,7 @@ import { useRef } from "react"
 import { Code, Palette, Zap, Users } from "lucide-react"
 import RevealOnScroll from "./reveal-on-scroll"
 import CounterAnimation from "./counter-animation"
+import Link from "next/link"
 
 const stats = [
   { label: "Projects Completed", value: 50, suffix: "+" },
@@ -73,13 +74,15 @@ export default function AboutSection() {
                 I believe in continuous learning, thoughtful design, and writing clean, scalable code that drives meaningful results.
               </p>
 
-              <motion.button
-                className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Download Resume
-              </motion.button>
+              <Link href="/cv-amsal.pdf" target="_blank" download>
+                <motion.button
+                  className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 text-white"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Download Resume
+                </motion.button>
+              </Link>
             </div>
           </RevealOnScroll>
 
@@ -102,27 +105,6 @@ export default function AboutSection() {
           </RevealOnScroll>
         </div>
 
-        {/* Stats */}
-        <RevealOnScroll>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-indigo-400 mb-2">
-                  <CounterAnimation value={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-slate-300 dark:text-slate-300 light:text-slate-600 transition-colors duration-300">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </RevealOnScroll>
 
         {/* Features */}
         <RevealOnScroll>

@@ -104,7 +104,7 @@ export default function ProjectsSection() {
     selectedCategory === "All" ? projects : projects.filter((project) => project.category === selectedCategory)
 
   return (
-    <section id="projects" className="py-20" ref={ref}>
+    <section id="projects" className="py-20 border-b border-slate-700" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <div className="text-center mb-16">
