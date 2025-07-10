@@ -26,7 +26,7 @@ const projects: Project[] = [
       "A comprehensive Netflix clone application built with MongoDB, Express, React, and Node.js. Features include user authentication, content browsing, video streaming, and personalized recommendations using data from The Movie Database (TMDB) API.",
     tech: ["React", "Node.js", "MongoDB", "Express", "TMDB API", "Tailwind CSS"],
     image: "/gambar.png",
-    liveUrl: "https://netflix-clone-example.com",
+    liveUrl: "",
     githubUrl: "https://github.com/user/netflix-clone",
     category: "Full Stack",
   },
@@ -38,8 +38,8 @@ const projects: Project[] = [
       "A sophisticated laboratory reservation and scheduling system built with Laravel 12 and React. Features real-time notifications, resource management, automated scheduling, and comprehensive reporting. Implemented with TypeScript and Tailwind CSS for a modern, responsive interface.",
     tech: ["Laravel 12", "React", "Inertia.js", "TypeScript", "Tailwind CSS", "MySQL"],
     image: "/gambar1.jpg",
-    liveUrl: "https://lab-reservation-example.com",
-    githubUrl: "https://github.com/amsal1453/reservasi-labs-apps",
+    liveUrl: "",
+    githubUrl: "https://github.com/user/lab-reservation",
     category: "Full Stack",
   },
   {
@@ -50,8 +50,8 @@ const projects: Project[] = [
       "A comprehensive Geographic Information System built with Laravel 11 and React. Features include interactive maps powered by Leaflet.js, spatial data analysis, location-based services, and customizable data visualization. Designed for efficient geographic data management and analysis.",
     tech: ["Laravel 11", "React", "Inertia.js", "Leaflet.js", "Tailwind CSS", "PostgreSQL"],
     image: "/gambar2.jpg",
-    liveUrl: "https://gis-example.com",
-    githubUrl: "https://github.com/amsal1453/gis-nagan-raya",
+    liveUrl: "",
+    githubUrl: "https://github.com/user/gis-system",
     category: "Full Stack",
   },
   {
@@ -62,8 +62,8 @@ const projects: Project[] = [
       "A modern property promotion and management system built with Laravel and Filament. Features include property listings, advanced search functionality, image galleries, agent management, and inquiry handling. Implemented with Blade templates for a fast, responsive user experience.",
     tech: ["Laravel", "Filament", "Blade", "MySQL", "Tailwind CSS"],
     image: "/gambar3.jpg",
-    liveUrl: "https://property-promo-example.com",
-    githubUrl: "https://github.com/amsal1453/properti-apps",
+    liveUrl: "",
+    githubUrl: "https://github.com/user/property-promotion",
     category: "Full Stack",
   },
   {
@@ -74,8 +74,8 @@ const projects: Project[] = [
       "A stunning portfolio website featuring smooth scroll animations, dark/light mode toggle, responsive design, and optimized performance. Built with Next.js and Framer Motion for exceptional user experience.",
     tech: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
     image: "/gambar4.png",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/amsal1453/portopolio-magang",
+    liveUrl: "https://badeamsaldev.vercel.app/",
+    githubUrl: "https://github.com/user/repo",
     category: "Frontend",
   }
 ]
@@ -188,16 +188,18 @@ export default function ProjectsSection() {
                   >
                     <Github size={20} />
                   </motion.a>
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ExternalLink size={20} />
-                  </motion.a>
+                  {project.liveUrl && (
+                    <motion.a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <ExternalLink size={20} />
+                    </motion.a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -256,17 +258,19 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="flex gap-4">
-                  <motion.a
-                    href={selectedProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <ExternalLink size={20} />
-                    Live Demo
-                  </motion.a>
+                  {selectedProject.liveUrl && (
+                    <motion.a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <ExternalLink size={20} />
+                      Live Demo
+                    </motion.a>
+                  )}
                   <motion.a
                     href={selectedProject.githubUrl}
                     target="_blank"

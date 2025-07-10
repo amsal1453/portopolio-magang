@@ -74,7 +74,7 @@ export default function AboutSection() {
                 I believe in continuous learning, thoughtful design, and writing clean, scalable code that drives meaningful results.
               </p>
 
-              <Link href="/cv-amsal.pdf" target="_blank" download>
+              <Link href="/CV-amsal.pdf" target="_blank" download>
                 <motion.button
                   className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 text-white"
                   whileHover={{ scale: 1.05 }}
