@@ -39,7 +39,7 @@ const projects: Project[] = [
     tech: ["Laravel 12", "React", "Inertia.js", "TypeScript", "Tailwind CSS", "MySQL"],
     image: "/gambar1.jpg",
     liveUrl: "",
-    githubUrl: "https://github.com/user/lab-reservation",
+    githubUrl: "https://github.com/amsal1453/reservasi-labs-apps",
     category: "Full Stack",
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     tech: ["Laravel 11", "React", "Inertia.js", "Leaflet.js", "Tailwind CSS", "PostgreSQL"],
     image: "/gambar2.jpg",
     liveUrl: "",
-    githubUrl: "https://github.com/user/gis-system",
+    githubUrl: "https://github.com/amsal1453/gis-nagan-raya",
     category: "Full Stack",
   },
   {
@@ -63,7 +63,7 @@ const projects: Project[] = [
     tech: ["Laravel", "Filament", "Blade", "MySQL", "Tailwind CSS"],
     image: "/gambar3.jpg",
     liveUrl: "",
-    githubUrl: "https://github.com/user/property-promotion",
+    githubUrl: "https://github.com/amsal1453/properti-apps",
     category: "Full Stack",
   },
   {
@@ -75,7 +75,7 @@ const projects: Project[] = [
     tech: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
     image: "/gambar4.png",
     liveUrl: "https://badeamsaldev.vercel.app/",
-    githubUrl: "https://github.com/user/repo",
+    githubUrl: "https://github.com/amsal1453/portopolio-magang",
     category: "Frontend",
   }
 ]
