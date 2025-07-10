@@ -27,7 +27,7 @@ const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB", "Express", "TMDB API", "Tailwind CSS"],
     image: "/gambar.png",
     liveUrl: "",
-    githubUrl: "https://github.com/user/netflix-clone",
+    githubUrl: "https://github.com/amsal1453/front-end-mern",
     category: "Full Stack",
   },
   {
