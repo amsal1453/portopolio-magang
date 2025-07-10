@@ -39,7 +39,7 @@ export default function Portfolio() {
 
   return (
     <ThemeProvider>
-      <div className="bg-slate-950 dark:bg-slate-950 light:bg-white text-white dark:text-white light:text-slate-900 overflow-x-hidden transition-colors duration-500">
+      <div className="bg-slate-950 text-white overflow-x-hidden transition-colors duration-500">
         {/* Progress Bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 origin-left z-50"

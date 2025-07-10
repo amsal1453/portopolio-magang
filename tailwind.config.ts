@@ -154,13 +154,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    // Custom "light:" variant
-    plugin(({ addVariant }) => {
-      addVariant("light", ".light &")
-    }),
-  ],
+ 
 }
 
 export default config
